@@ -13,21 +13,11 @@ biblatexoptions: style = apa
 
 Resistance training is important for general health and increases strength and skeletal muscle size, when done over a longer period of time. There are different variables and factors that influence the effect of resistance training and individuals have different responses to resistance training and its volume [@ahtiainen2016].
 
-Several studies on resistance training have investigated how factors like number of sets and repetitions influence body composition and muscle strength differently. Schoenfeld et al. [-@schoenfeld2017] looked at the effect of number of weekly sets on muscle size. The number of weekly sets had a significant effect on muscle size changes (p=.002). In another study Rønnestad et al. [-@rønnestad2007] compared the effects of resistance training volume on strength gains in untrained men. Participants were randomly split up into two groups, one group trained 3 sets in all the leg exercises and 1 set in the upper body exercises (3L-1UB) while the other group trained 1 set in leg exercises and 3 sets in upper body exercises (1L-3UB). After 11 weeks of training the 3L-1UB group (41%) improved their 1RM in the leg exercises significantly more (p\<.001) than the 1L-3UB group (21%).
+Several studies on resistance training have investigated how factors like number of sets and repetitions influence body composition and muscle strength differently. Schoenfeld et al. [-@schoenfeld2017] looked at the effect of number of weekly sets on muscle size. The number of weekly sets had a significant effect on muscle size changes (p=.002). In another study Rønnestad et al. [-@rønnestad2007] compared the effects of resistance training volume on strength gains in untrained men. Participants were randomly split up into two groups, one group trained 3 sets in all the leg exercises and 1 set in the upper body exercises (3L-1UB) while the other group trained 1 set in leg exercises and 3 sets in upper body exercises (1L-3UB). After 11 weeks of training the 3L-1UB group (41%) improved their 1RM in the leg exercises significantly more (p\<.001) than the 1L-3UB group (21%). There were no group-differences in the upper body exercises. McBride et al. [-@mcbride2003] designed a study to compare the effects of single (1 set) versus multiple (6 sets) set resistance training on strength and body composition in untrained men. After the 12 week intervention (leg press and bicep curl) both groups had improved their percentage strength significantly, with the multiple set group showing an even better increase in the bicep curl than the single set group. No significant differences between the groups were found regarding body composition. Rhea et al. [-@rhea] also looked at strength gain after following either a single or multiple set resistance training program and found that training 3 sets gave a statistically significant increase in the 1RM in the leg press.
 
-Description of the field, resistance training volume, muscle strength, muscle mass
+Contrary to those findings is the conclusion of Carpinelli [-@carpinelli1998], who says that performing single or multiple set resistance training for a training period of 4 to 25 weeks does not result in significant difference in strength increase.
 
-hypothesis based on previous studies or a question to fill a knowledge gap
-
-1.  general intro, why is it of interest to investigate resistance. training
-
-2.  specific field of resistance training volume, why do we respond differently to those volumes; definitions of training volume, muscle mass, strength
-
-3.  statement regarding the purpose, descriptive, hypothesis driven of guided by a question
-
-    -\> Although it could be considered a bit backward, you should explore the data sets before you select your question/hypothesis/purpose for it to be possible to answer.
-
-The goal of this study was to determine if there is a significant change in lean mass and maximal strength with different resistance training volumes, in this case one set vs. three sets.
+With the background of those findings the goal of this study was to determine if there is a significant change in lean mass and maximal strength with different resistance training volumes, in this case one set vs. three sets.
 
 ## Methods
 
