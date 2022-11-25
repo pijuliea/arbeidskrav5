@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Pia">
+
+<title>Assignment 5: Analyzing repeated measures experiments</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="arbeidskrav5_files/libs/clipboard/clipboard.min.js"></script>
+<script src="arbeidskrav5_files/libs/quarto-html/quarto.js"></script>
+<script src="arbeidskrav5_files/libs/quarto-html/popper.min.js"></script>
+<script src="arbeidskrav5_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="arbeidskrav5_files/libs/quarto-html/anchor.min.js"></script>
+<link href="arbeidskrav5_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="arbeidskrav5_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="arbeidskrav5_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="arbeidskrav5_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="arbeidskrav5_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Assignment 5: Analyzing repeated measures experiments</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Pia </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Resistance training is important for general health and increases strength and skeletal muscle size, when done over a longer period of time. There are different variables and factors that influence the effect of resistance training and individuals have different responses to resistance training and its volume <span class="citation" data-cites="ahtiainen2016">(<a href="#ref-ahtiainen2016" role="doc-biblioref">Ahtiainen et al. 2016</a>)</span>.</p>
+<p>Several studies on resistance training have investigated how factors like number of sets and repetitions influence body composition and muscle strength differently. Schoenfeld et al. <span class="citation" data-cites="schoenfeld2017">(<a href="#ref-schoenfeld2017" role="doc-biblioref">2017</a>)</span> looked at the effect of number of weekly sets on muscle size. The number of weekly sets had a significant effect on muscle size changes (p=.002). In another study Rønnestad et al. <span class="citation" data-cites="rønnestad2007">(<a href="#ref-rønnestad2007" role="doc-biblioref">2007</a>)</span> compared the effects of resistance training volume on strength gains in untrained men. Participants were randomly split up into two groups, one group trained 3 sets in all the leg exercises and 1 set in the upper body exercises (3L-1UB) while the other group trained 1 set in leg exercises and 3 sets in upper body exercises (1L-3UB). After 11 weeks of training the 3L-1UB group (41%) improved their 1RM in the leg exercises significantly more (p&lt;.001) than the 1L-3UB group (21%).</p>
+<p>Description of the field, resistance training volume, muscle strength, muscle mass</p>
+<p>hypothesis based on previous studies or a question to fill a knowledge gap</p>
+<ol type="1">
+<li><p>general intro, why is it of interest to investigate resistance. training</p></li>
+<li><p>specific field of resistance training volume, why do we respond differently to those volumes; definitions of training volume, muscle mass, strength</p></li>
+<li><p>statement regarding the purpose, descriptive, hypothesis driven of guided by a question</p>
+<p>-&gt; Although it could be considered a bit backward, you should explore the data sets before you select your question/hypothesis/purpose for it to be possible to answer.</p></li>
+</ol>
+<p>The goal of this study was to determine if there is a significant change in lean mass and maximal strength with different resistance training volumes, in this case one set vs.&nbsp;three sets.</p>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<section id="study-overview-and-participants" class="level4">
+<h4 class="anchored" data-anchor-id="study-overview-and-participants">Study overview and participants</h4>
+<p>The participants (n = 41) were between 18 and 40 years old and had to be non-smokers. Other exclusion factors are listed in Table 1.</p>
+<p>XXXX more</p>
+<table class="table">
+<caption>Table 1: Exclusion criteria</caption>
+<thead>
+<tr class="header">
+<th>Col1</th>
+<th>Col2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>hello</td>
+<td>hello</td>
+</tr>
+<tr class="even">
+<td>hello</td>
+<td>hello</td>
+</tr>
+<tr class="odd">
+<td>hello</td>
+<td>hello</td>
+</tr>
+<tr class="even">
+<td>hello</td>
+<td>hello</td>
+</tr>
+<tr class="odd">
+<td>hello</td>
+<td>hello</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="intervention" class="level4">
+<h4 class="anchored" data-anchor-id="intervention">Intervention</h4>
+<p>The 12 week long intervention consisted of 2-3 full-body resistance training sessions per week. Participants performed the leg exercises unilaterally and trained with different training volumes on each leg. This was done to see possible differences in the effect of resistance training volumes. It was chosen randomly which leg performed one set (single set) or three sets (multiple sets). Body composition and muscle strength was tested at baseline and after the training intervention. There were additional muscle strength assessments after 3, 5 and 9 weeks of training.</p>
+</section>
+<section id="training-protocol" class="level4">
+<h4 class="anchored" data-anchor-id="training-protocol">Training protocol</h4>
+<p>The warm-up was a standardized routine which all participants followed before getting started with the training sessions. Participants started with 5 minutes of cycling on the ergometer at 12-14 RPE (rating of perceived exertion). After that they performed 10 repetitions of all of the body weight exercises (push-ups, sit-ups, back extensions, squats). The last part of the warm-up consisted of one set of each of the restistance exercises with 10 repetitions at around 50% of 1RM (repetition maximum).</p>
+<p>Participants followed this order while performing the resistance exercises: unilateral leg press, leg curl, knee extenstion. The exercises were performed as either a single set or multiple sets. The single sets were done in between the second and third set of the multiple set side. The lower body exercises were followed by two sets of bilateral bench press, pull down and either shoulder press or seated rowing - those two exercises were alternated from session to session. The participants had between 90 to 180 seconds of set-rest. As far as training intensity goes the intervention started out the first two weeks with 10RM, increased gradually up to 8RM the following 3 weeks and ended at 7RM during the last 7 weeks. Some of the training sessions were performed without supervision, where participants were asked to keep detailed logs. An average of 91% sessions were supervised.</p>
+</section>
+<section id="maximal-strength-assessment" class="level4">
+<h4 class="anchored" data-anchor-id="maximal-strength-assessment">Maximal strength assessment</h4>
+<p>The maximal strength was measured as a 1RM in the unilateral leg press and knee extension. Participants performed a specific warm-up before each exercise which consisted of 10, 6 and 3 repetitions at 50, 75 and 85% of the predicted maximum. The 1RM was then assessed by increasing the weight until it could not be lifted any longer. The 1RM for each exercise was the highest restistance a participant could successfully lift with full range of motion. Participants got four to six tries.</p>
+</section>
+<section id="body-composition-dxa" class="level4">
+<h4 class="anchored" data-anchor-id="body-composition-dxa">Body composition (DXA)</h4>
+<p>Dual-energy X-ray absorptiometry (DXA) was used to test each participant’s body composition before and after the intervention. A standard protocol was followed and participants had to fast the 2 hours before the test as well as not do any intense physical activity 48 hours prior to the scan.</p>
+</section>
+<section id="data-analysis-and-statistics" class="level4">
+<h4 class="anchored" data-anchor-id="data-analysis-and-statistics">Data analysis and statistics</h4>
+<p>The statistical analysis was performed using R-studio (Version 4.2.2).</p>
+<p>XXXX more</p>
+</section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<section id="body-composition---lean-mass" class="level4">
+<h4 class="anchored" data-anchor-id="body-composition---lean-mass">Body composition - lean mass</h4>
+<p>The results of this study show a significant change of 3.32% (± 4.39) in the lean mass of the multiple sets leg compared to the single set leg, which had a change of 2.04% (± 3.71) after 12 weeks of resistance training (p&lt;.001).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="arbeidskrav5_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 1: Change in lean mass from pre to post, single vs.&nbsp;multiple sets</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="maximal-strength" class="level4">
+<h4 class="anchored" data-anchor-id="maximal-strength">Maximal strength</h4>
+<p>The results of this study show a significant improvement of 31% (± 14.2) in the maximal strength of the multiple sets leg compared to the single set leg, which had a change of 24.5% (± 12.9) after 12 weeks of resistance training (p&lt;.001).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="arbeidskrav5_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 2: Change in strength (combined load) from pre to post, single vs.&nbsp;multiple sets</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
+<p>Die Ergebnisse dieser Studie zeigen, dass 2-3x wöchentliches Krafttraining mit single set und multiple set zu einer Verbesserung der Maximalkraft und lean mass führen, wobei die Verbesserung mit dem multiple set Protokoll größer waren. Das stimmt mit früheren Studien überein.</p>
+<p>Herausforderung: DXA Genauigkeit</p>
+<p>XXXX more</p>
+</section>
+<section id="references" class="level2 unnumbered">
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-ahtiainen2016" class="csl-entry" role="doc-biblioentry">
+Ahtiainen, Juha P., Simon Walker, Heikki Peltonen, Jarkko Holviala, Elina Sillanpää, Laura Karavirta, Janne Sallinen, et al. 2016. <span>“Heterogeneity in resistance training-induced muscle strength and mass responses in men and women of different ages.”</span> <em>Age (Dordrecht, Netherlands)</em> 38 (1): 10. <a href="https://doi.org/10.1007/s11357-015-9870-1">https://doi.org/10.1007/s11357-015-9870-1</a>.
+</div>
+<div id="ref-rønnestad2007" class="csl-entry" role="doc-biblioentry">
+Rønnestad, Bent R., Wilhelm Egeland, Nils H. Kvamme, Per E. Refsnes, Fawzi Kadi, and Truls Raastad. 2007. <span>“DISSIMILAR EFFECTS OF ONE- AND THREE-SET STRENGTH TRAINING ON STRENGTH AND MUSCLE MASS GAINS IN UPPER AND LOWER BODY IN UNTRAINED SUBJECTS:”</span> <em>Journal of Strength and Conditioning Research</em> 21 (1): 157–63. <a href="https://doi.org/10.1519/00124278-200702000-00028">https://doi.org/10.1519/00124278-200702000-00028</a>.
+</div>
+<div id="ref-schoenfeld2017" class="csl-entry" role="doc-biblioentry">
+Schoenfeld, Brad J., Dan Ogborn, and James W. Krieger. 2017. <span>“Dose-Response Relationship Between Weekly Resistance Training Volume and Increases in Muscle Mass: A Systematic Review and Meta-Analysis.”</span> <em>Journal of Sports Sciences</em> 35 (11): 1073–82. <a href="https://doi.org/10.1080/02640414.2016.1210197">https://doi.org/10.1080/02640414.2016.1210197</a>.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
