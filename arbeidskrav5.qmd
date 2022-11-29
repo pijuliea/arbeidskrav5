@@ -53,19 +53,17 @@ The maximal strength was measured as a 1RM in the unilateral leg press and knee 
 
 #### Body composition (DXA)
 
-Dual-energy X-ray absorptiometry (DXA) was used to test each participant's body composition before and after the intervention. A standard protocol was followed and participants had to fast the 2 hours before the test as well as not do any intense physical activity 48 hours prior to the scan.
+Dual-energy X-ray absorptiometry (DXA) was used to test each participant's body composition (lean mass) before and after the intervention. A standard protocol was followed and participants had to fast the 2 hours before the test as well as not do any intense physical activity 48 hours prior to the scan.
 
 #### Data analysis and statistics
 
-The statistical analysis was performed using R-studio (Version 4.2.2).
+The statistical analysis was performed using R-studio (Version 4.2.2). t-test
 
 XXXX more
 
 ## Results
 
 #### Body composition - lean mass
-
-The results of this study show a significant change of 3.32% (± 4.39) in the lean mass of the multiple sets leg compared to the single set leg, which had a change of 2.04% (± 3.71) after 12 weeks of resistance training (p\<.001).
 
 ```{r}
 #| echo: FALSE
@@ -75,37 +73,41 @@ The results of this study show a significant change of 3.32% (± 4.39) in the le
 
 #### LEAN MASS
 
+library(tidyverse); library(exscidata); library(lme4)
 
-library(exscidata)
-library(tidyverse)
-data("dxadata")
-
-leanmass <- dxadata %>%
+# Load data
+datlean <- dxadata %>%
   select(participant:include, lean.left_leg, lean.right_leg) %>%
+        
+        # Extract leg specific data
   pivot_longer(names_to = "leg", 
                values_to = "lean.mass", 
                cols = lean.left_leg:lean.right_leg) %>%
   mutate(leg = if_else(leg == "lean.left_leg", "L", "R"), 
          sets = if_else(multiple == leg, "multiple", "single")) %>%
-  select(participant, time, sets, leg, lean.mass) %>%
-  pivot_wider(names_from = time,
-              values_from = lean.mass) %>%
-  mutate(change = post - pre) %>%
-  mutate(pre.mc = pre - mean(pre)) %>% 
-  mutate(perc.change = ((post - pre) / pre) * 100) %>%
-  filter(!is.na(change)) 
-  
-leanmass %>%   
-  group_by(sets) %>%
-  summarise(m = mean(perc.change),
-            sd = sd(perc.change))
+  select(participant, time, sex, include, sets, leg, lean.mass) %>%
+        # Filter only included participants
+        filter(include == "incl") %>%
+        # Make data set wider by time 
+        
+        pivot_wider(names_from = "time", 
+                    values_from = "lean.mass") %>%
+        # Calculate change score
+        
+        mutate(change = post - pre) %>%
+        
+        # Keep change score and make it wider by sets
+        select(participant:sets, change) %>%
+        pivot_wider(names_from = sets, values_from = change) %>%
+        
+  print()
 
-lean1 <- lm(post ~ pre + sets, data = leanmass)
+### Use simple t-test on change score
 
-summary(lean1)
-
-plot(lean1)
+t.test(datlean$multiple, datlean$single, paired = TRUE)
 ```
+
+The paired t-test compared the change in lean mass from the pretest to the posttest regarding multiple and single set training. The change in lean mass regarding the multiple and single set leg was significant (t(33)=2.1875, p=.0359).
 
 ```{r}
 #| echo: FALSE
@@ -116,24 +118,24 @@ plot(lean1)
 
 #### LEAN MASS FIGURE
 
-leandata <- dxadata %>%
+library(exscidata); library(tidyverse)
+
+data("dxadata")
+
+dxadata %>%
   select(participant:include, lean.left_leg, lean.right_leg) %>%
   pivot_longer(names_to = "leg", 
                values_to = "lean.mass", 
                cols = lean.left_leg:lean.right_leg) %>%
   mutate(leg = if_else(leg == "lean.left_leg", "L", "R"), 
-         sets = if_else(multiple == leg, "Multiple", "Single")) %>%
-  select(participant, time, sets, leg, lean.mass) %>%
-  group_by(participant) %>%
-  mutate(n = n(),
-         group = factor(sets, levels = c("Single", "Multiple")),
-         time = factor(time, levels = c("pre", "post")))
-
-leandata %>%
-  ggplot(aes(time, lean.mass,
-            group = paste(participant, group),
-            color = group)) +
-  geom_line() +
+         sets = if_else(multiple == leg, "multiple", "single")) %>%
+  select(participant, time, sex, include, sets, leg, lean.mass) %>%
+  filter(time %in% c("pre", "post")) %>%
+  group_by(time, sets) %>%
+  summarise(m = mean(lean.mass)) %>%
+  mutate(time = factor(time, levels = c("pre", "post"))) %>%
+  ggplot(aes(time, m, color = sets,
+             group = sets)) + geom_line() +
   labs(x = "Timepoint",
        y = "Lean mass",
        color = "Sets")
@@ -141,7 +143,58 @@ leandata %>%
 
 #### Maximal strength
 
-The results of this study show a significant improvement of 31% (± 14.2) in the maximal strength of the multiple sets leg compared to the single set leg, which had a change of 24.5% (± 12.9) after 12 weeks of resistance training (p\<.001).
+```{r}
+#| echo: FALSE
+#| warning: FALSE
+#| message: FALSE
+#| include: FALSE
+
+#### MUSCLE STRENGTH - LEGPRESS
+
+library(tidyverse); library(exscidata); library(lme4)
+
+data("strengthvolume")
+
+
+# Load data
+datpress <- strengthvolume %>%
+  select(participant, sex, exercise, include, time, sets, leg, load) %>%
+
+        # Filter only included participants
+        filter(include == "incl") %>%
+        
+        # Calculate average baseline
+        mutate(time = if_else(time %in% c("pre", "session1"), "pre", time)) %>%
+        group_by(time, exercise, participant, sex, sets) %>%
+        summarise(load = mean(load, bna.rm = TRUE)) %>%
+       
+        # Use a specific strength test and only pre-post data
+        
+        filter(exercise == "legpress",
+                time %in% c("pre", "post")) %>%
+  
+        # Make data set wider by time
+
+        pivot_wider(names_from = "time",
+                    values_from = "load") %>%
+  
+        # Calculate change score
+
+        mutate(change = post - pre) %>%
+
+        # Keep change score and make it wider by sets
+  
+        select(participant:sets, change) %>%
+        pivot_wider(names_from = sets, values_from = change) %>%
+
+  print()
+
+### Use simple t-test on change score
+
+t.test(datpress$multiple, datpress$single, paired = TRUE)
+```
+
+The paired t-test compared the change in muscle strength (leg press) from the pretest to the posttest regarding multiple and single set training. The change in muscle strength (leg press) regarding the multiple and single set leg was significant (t(29)=2.1366, p=.0412).
 
 ```{r}
 #| echo: FALSE
@@ -149,64 +202,52 @@ The results of this study show a significant improvement of 31% (± 14.2) in the
 #| message: FALSE
 #| include: FALSE
 
-#### STRENGTH
+#### MUSCLE STRENGTH - LEG EXTENTION
 
-library(exscidata)
-library(tidyverse)
+library(tidyverse); library(exscidata); library(lme4)
+
 data("strengthvolume")
 
-strength <- strengthvolume %>%
-  filter(!is.na(load)) %>%
-  group_by(exercise) %>%
-  mutate(scaled.load = load / max(load, na.rm = TRUE)) %>%
-  group_by(participant, time, sets) %>%
-  summarise(combined.load = mean(scaled.load, na.rm = TRUE)) %>%
-  ungroup() %>%
-  pivot_wider(names_from = time,
-              values_from = combined.load) %>%
-  mutate(perc.change = ((post - pre) / pre) * 100) 
 
-strength %>%    
-  filter(!is.na(post)) %>%
-  group_by(sets) %>%
-  summarise(m = mean(perc.change),
-            sd = sd(perc.change)) 
+# Load data
+datext <- strengthvolume %>%
+  select(participant, sex, exercise, include, time, sets, leg, load) %>%
 
-strength1 <- lm(post ~ pre + sets, data = strength)
+        # Filter only included participants
+        filter(include == "incl") %>%
+        
+        # Calculate average baseline
+        mutate(time = if_else(time %in% c("pre", "session1"), "pre", time)) %>%
+        group_by(time, exercise, participant, sex, sets) %>%
+        summarise(load = mean(load, bna.rm = TRUE)) %>%
+       
+        # Use a specific strength test and only pre-post data
+        
+        filter(exercise == "legext",
+                time %in% c("pre", "post")) %>%
+  
+        # Make data set wider by time
 
-summary(strength1)
+        pivot_wider(names_from = "time",
+                    values_from = "load") %>%
+  
+        # Calculate change score
 
-plot(strength1)
+        mutate(change = post - pre) %>%
+
+        # Keep change score and make it wider by sets
+  
+        select(participant:sets, change) %>%
+        pivot_wider(names_from = sets, values_from = change) %>%
+
+  print()
+
+### Use simple t-test on change score
+
+t.test(datext$multiple, datext$single, paired = TRUE)
 ```
 
-```{r}
-#| echo: FALSE
-#| warning: FALSE
-#| message: FALSE
-#| include: TRUE
-#| fig-cap: "Figure 2: Change in strength (combined load) from pre to post, single vs. multiple sets"
-
-#### STRENGTH FIGURE
-
-strengthdata <- strengthvolume %>%
-  group_by(exercise) %>%
-  mutate(scaled.load = load / max(load, na.rm = TRUE)) %>%
-  group_by(participant, time, sets) %>%
-  summarise(combined.load = mean(scaled.load, na.rm = TRUE)) %>%
-  ungroup() 
-
-strengthdata %>%
-  filter(!is.na(combined.load),
-         time == factor(time, levels = c("pre", "post"))) %>%
-  mutate(time = factor(time, levels = c("pre", "post")),
-         group = factor(sets, levels = c("Single", "Multiple"))) %>%
-  ggplot(aes(time, combined.load, group = paste(participant, sets),
-            color = sets)) +
-  geom_line() +
-  labs(x = "Timepoint",
-       y = "Combined load",
-       color = "Sets")
-```
+The paired t-test compared the change in muscle strength (leg extension) from the pretest to the posttest regarding multiple and single set training. The change in muscle strength (leg extension) regarding the multiple and single set leg was significant (t(31)=3.3683, p=.002035).
 
 ## Discussion
 
@@ -215,5 +256,9 @@ Die Ergebnisse dieser Studie zeigen, dass 2-3x wöchentliches Krafttraining mit 
 Herausforderung: DXA Genauigkeit
 
 XXXX more
+
+The results of this study show a significant improvement of 31% (± 14.2) in the maximal strength of the multiple sets leg compared to the single set leg, which had a change of 24.5% (± 12.9) after 12 weeks of resistance training (p\<.001).
+
+je niedriger der p verdi desto niedriger die chance dass es zufall war
 
 ## References
